@@ -56,15 +56,10 @@ class _HomeState extends State<Home> {
       Response response = await get(Uri.parse('https://api.waqi'
           '.info/feed/geo:${position.latitude};${position.longitude}/?token=$value'));
       Map data = json.decode(response.body);
-      //print(data);
       int airQuality = data['data']['aqi'];
-      print(airQuality);
       String dominentPol = data['data']['dominentpol'];
-      print(dominentPol);
       String timeZone = data['data']['time']['tz'].substring(1, 3);
-      print(timeZone);
       String dateTime = data['data']['time']['iso'];
-      print(dateTime);
       DateTime now = DateTime.parse(dateTime);
       now = now.add(Duration(hours: int.parse(timeZone)));
 
@@ -79,13 +74,6 @@ class _HomeState extends State<Home> {
     }
     return position;
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   //determinePosition();
-  //   print('location');
-  // }
 
   @override
   Widget build(BuildContext context) {
